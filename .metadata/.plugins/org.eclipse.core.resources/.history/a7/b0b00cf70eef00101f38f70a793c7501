@@ -1,0 +1,36 @@
+import java.rmi.RemoteException;
+import java.rmi.server.RemoteObject;
+import java.sql.SQLException;
+
+public class UserImpl extends RemoteObject implements IUser {
+	private DAO dao;
+
+	public UserImpl() throws SQLException {
+		this.dao = new DAO();
+	}
+
+	@Override
+	public boolean checkUser(String username) throws RemoteException {
+		// TODO Auto-generated method stub
+		try {
+			return dao.checkUser(username);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean login(String username, String password) throws RemoteException {
+		// TODO Auto-generated method stub
+		try {
+			return dao.login(username, password);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+}

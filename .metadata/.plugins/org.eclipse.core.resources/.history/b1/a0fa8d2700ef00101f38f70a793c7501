@@ -1,0 +1,58 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
+
+public class ServerProcess extends Thread {
+	private Socket socket;
+	private BufferedReader br;
+	private PrintWriter pw;
+	private DAO dao;
+
+	public ServerProcess(Socket socket) throws IOException, SQLException {
+		this.socket = socket;
+		this.br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+		this.pw = new PrintWriter(socket.getOutputStream(), true);
+		this.pw.println("Welcome to Product Management System");
+		this.dao = new DAO();
+	}
+
+	@Override
+	public void run() {
+		try {
+			while (true) {
+				String line = br.readLine();
+				if (line.equalsIgnoreCase("QUIT") || line == null) {
+					break;
+				}
+				StringTokenizer st = new StringTokenizer(line, "\t");
+				String cmd = st.nextToken().toUpperCase();
+				List<String> paramArr = new ArrayList<>();
+				while (st.hasMoreTokens()) {
+					paramArr.add(st.nextToken());
+				}
+				switch (cmd) {
+				case "ADD": {
+					int productID = Integer.parseInt(paramArr.get(0));
+					String name = paramArr.get(1);
+					int count = Integer.parseInt(paramArr.get(2));
+					double price = Double.parseDouble(paramArr.get(3));
+					dao.add(productID, name, count, price);
+				}
+				case "BUY":{
+					
+				}
+				default:
+					throw new IllegalArgumentException("Unexpected value: " + cmd);
+				}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+}

@@ -1,0 +1,8 @@
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
+public interface IUser extends Remote {
+	public boolean user(String username) throws RemoteException;
+
+	public boolean password(String password) throws RemoteException;
+}

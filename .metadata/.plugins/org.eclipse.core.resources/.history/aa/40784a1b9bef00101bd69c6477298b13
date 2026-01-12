@@ -1,0 +1,10 @@
+import java.io.File;
+import java.io.RandomAccessFile;
+
+public class MusicManagement {
+	private int totalSong;
+	private RandomAccessFile raf;
+
+	public MusicManagement(File file) {
+	}
+}

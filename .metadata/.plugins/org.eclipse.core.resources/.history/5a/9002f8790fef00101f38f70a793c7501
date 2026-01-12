@@ -1,0 +1,10 @@
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
+public interface ITransactionLog extends Remote {
+	public boolean deposit(double money) throws RemoteException;
+
+	public boolean withdraw(double money) throws RemoteException;
+
+	public double balance(String username) throws RemoteException;
+}

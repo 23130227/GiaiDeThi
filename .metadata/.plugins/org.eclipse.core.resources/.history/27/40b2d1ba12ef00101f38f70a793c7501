@@ -1,0 +1,57 @@
+import java.io.Serializable;
+import java.time.LocalDate;
+
+public class TransactionLog implements Serializable {
+	private int stk;
+	private boolean operation;
+	private LocalDate date;
+	private double money;
+
+	public TransactionLog() {
+	}
+
+	public TransactionLog(int stk, boolean operation, LocalDate date, double money) {
+		this.stk = stk;
+		this.operation = operation;
+		this.date = date;
+		this.money = money;
+	}
+
+	public int getStk() {
+		return stk;
+	}
+
+	public void setStk(int stk) {
+		this.stk = stk;
+	}
+
+	public boolean isOperation() {
+		return operation;
+	}
+
+	public void setOperation(boolean operation) {
+		this.operation = operation;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public double getMoney() {
+		return money;
+	}
+
+	public void setMoney(double money) {
+		this.money = money;
+	}
+
+	@Override
+	public String toString() {
+		return "TransactionLog [stk=" + stk + ", operation=" + operation + ", date=" + date + ", money=" + money + "]";
+	}
+
+}

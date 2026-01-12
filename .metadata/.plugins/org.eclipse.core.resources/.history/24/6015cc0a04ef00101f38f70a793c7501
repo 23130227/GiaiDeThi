@@ -1,0 +1,18 @@
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class Server {
+	public static void main(String[] args) {
+		try {
+			ServerSocket ss = new ServerSocket(1080);
+			System.out.println("Server is ready");
+			while (true) {
+				Socket socket = ss.accept();
+				new ServerProcess(socket).start();
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+}

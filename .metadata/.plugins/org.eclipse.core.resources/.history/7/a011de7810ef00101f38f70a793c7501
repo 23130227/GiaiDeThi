@@ -1,0 +1,30 @@
+import java.rmi.RemoteException;
+import java.rmi.server.RemoteObject;
+
+public class TransactionLogImpl extends RemoteObject implements ITransactionLog {
+
+	@Override
+	public boolean deposit(double money) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean withdraw(double money) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public double balance(int stk) throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void report(int stk) throws RemoteException {
+		// TODO Auto-generated method stub
+
+	}
+
+}

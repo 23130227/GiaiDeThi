@@ -1,0 +1,44 @@
+
+public class Song {
+	private byte genre;
+	private String name;
+	private float size;
+
+	public Song() {
+	}
+
+	public Song(byte genre, String name, float size) {
+		this.genre = genre;
+		this.name = name;
+		this.size = size;
+	}
+
+	public byte getGenre() {
+		return genre;
+	}
+
+	public void setGenre(byte genre) {
+		this.genre = genre;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public float getSize() {
+		return size;
+	}
+
+	public void setSize(float size) {
+		this.size = size;
+	}
+
+	@Override
+	public String toString() {
+		return "Song [genre=" + genre + ", name=" + name + ", size=" + size + "]";
+	}
+}

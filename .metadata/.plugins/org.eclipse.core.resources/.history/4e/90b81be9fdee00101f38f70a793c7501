@@ -1,0 +1,22 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class DAO {
+	private Connection connection;
+
+	public DAO() throws SQLException {
+		this.connection = DriverManager.getConnection("jdbc:ucanaccess://D:/De20242025_TCP");
+	}
+
+	public boolean add(int productID, String name, int count, double price) throws SQLException {
+		String sql = "INSERT INTO products VALUES (?,?,?,?)";
+		PreparedStatement pr = connection.prepareStatement(sql);
+		pr.setInt(1, productID);
+		pr.setString(2, name);
+		pr.setInt(3, count);
+		pr.setDouble(4, price);
+		return pr.executeUpdate() > 0;
+	}
+}
