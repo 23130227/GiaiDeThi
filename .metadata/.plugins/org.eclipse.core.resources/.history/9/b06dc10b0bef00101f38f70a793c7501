@@ -1,5 +1,0 @@
-import java.rmi.server.RemoteObject;
-
-public class UserImpl extends RemoteObject implements IUser {
-
-}
